@@ -6,6 +6,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.qa.QACore;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -54,16 +55,23 @@ public class WebBaseTest extends QACore {
     @BeforeMethod
     public void beforeMethod(Method method) {
         logger = extentReports.startTest(method.getName());
-        openBrowser();
+//        openChromeBrowser();
+        openFireFoxBrowser();
     }
 
-    public void openBrowser() {
+    public void openChromeBrowser() {
         if (driver == null) {
             System.setProperty("webdriver.chrome.driver", "./src/main/resources/drivers/chromedriver");
             ChromeOptions opt = new ChromeOptions();
-//            opt.addExtensions(new File("./src/main/resources/extensions/Adblock.crx"));
             driver = new ChromeDriver(opt);
-//            driver.manage().window().maximize();
+            driver.navigate().to(serverProperties.getProperty(URL));
+        }
+    }
+
+    public void openFireFoxBrowser() {
+        if (driver == null) {
+            System.setProperty("webdriver.gecko.driver", "./src/main/resources/drivers/geckodriver");
+            driver = new FirefoxDriver();
             driver.navigate().to(serverProperties.getProperty(URL));
         }
     }

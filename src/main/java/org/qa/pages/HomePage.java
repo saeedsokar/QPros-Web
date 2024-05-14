@@ -64,6 +64,7 @@ public class HomePage extends AbstractPage {
     public boolean clickOnShopCart() {
         try {
             clickOnButton(shopCartButton);
+            logger.log(LogStatus.INFO, "proceed to cart Page");
             return true;
         } catch (Exception ex) {
             logger.log(LogStatus.ERROR, "failed to click on shop cart button due to: " + ex.getMessage());
