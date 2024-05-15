@@ -23,4 +23,6 @@ then the script will be redirected to the checkout and validate that the billing
 2. make sure to project JAVA SDK from project settings = 20
 3. Chrome and Firefox drivers are located in the solution
 4. From the root path of the checkout main branch locally, type in terminal "mvn clean package"
+5. after execution, open report in chrome from reports directory in the solution
+6. after execution, open screenshots from /src/test/resources/screenshots
    
