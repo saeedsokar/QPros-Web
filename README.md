@@ -16,9 +16,11 @@ then the script will be redirected to the checkout and validate that the billing
 3. A screenshot is captured per each test case.
 4. The solution is following -> Page object model design pattern with simple SOLID principles to be adoptable to changes and provide usability.
 5. The solution allows parallel testing through testng.xml file, ** however, the solution isn't working with Firefox
+6. Dockerfile is configured, but not working
 
 #Setup
 1. make sure that Maven is downloaded and installed
 2. make sure to project JAVA SDK from project settings = 20
 3. Chrome and Firefox drivers are located in the solution
+4. From the root path of the checkout main branch locally, type in terminal "mvn clean package"
    
