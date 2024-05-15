@@ -9,12 +9,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.qa.QACore;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
-import java.io.File;
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import java.util.Properties;
@@ -53,10 +49,14 @@ public class WebBaseTest extends QACore {
     }
 
     @BeforeMethod
-    public void beforeMethod(Method method) {
+    @Parameters("browser")
+    public void beforeMethod(Method method,String browser) {
         logger = extentReports.startTest(method.getName());
-//        openChromeBrowser();
-        openFireFoxBrowser();
+        if (browser.equalsIgnoreCase("chrome")) {
+            openChromeBrowser();
+        } else if (browser.equalsIgnoreCase("firefox")) {
+            openFireFoxBrowser();
+        }
     }
 
     public void openChromeBrowser() {
